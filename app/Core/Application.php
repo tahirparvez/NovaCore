@@ -4,6 +4,7 @@ namespace NovaCore\Core;
 
 use NovaCore\Core\Routing\Router;
 use NovaCore\Core\Routing\RouteFacade;
+use NovaCore\Core\Routing\ControllerResolver;
 
 
 
@@ -35,16 +36,29 @@ class Application
         );
 
 
-$router=new Router();
 
-
-RouteFacade::setRouter(
-    $router
+$this->container->singleton(
+    ControllerResolver::class,
+    new ControllerResolver(
+        $this->container
+    )
 );
+
+
+
+$router = $this->container->make(
+    Router::class
+);
+
 
 
 $this->container->singleton(
     Router::class,
+    $router
+);
+
+
+RouteFacade::setRouter(
     $router
 );
 

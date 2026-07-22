@@ -3,17 +3,13 @@
 use NovaCore\Core\Routing\RouteFacade as Route;
 
 
+use NovaCore\Http\Controllers\HomeController;
+
+
 Route::get(
     '/',
-    function(){
-
-        return new \NovaCore\Http\Response(
-            "Welcome to NovaCore 🚀"
-        );
-
-    }
+    HomeController::class
 );
-
 
 Route::get(
     '/hello',

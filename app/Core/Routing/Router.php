@@ -7,23 +7,31 @@ namespace NovaCore\Core\Routing;
 
 use NovaCore\Http\Request;
 use NovaCore\Http\Response;
-
+use NovaCore\Core\Routing\ControllerResolver;
 
 class Router
 {
 
 
-    protected RouteCollection $routes;
+   protected RouteCollection $routes;
+
+protected ControllerResolver $resolver;
 
 
 
-    public function __construct()
-    {
+   public function __construct(
+    ControllerResolver $resolver
+)
+{
 
-        $this->routes =
-            new RouteCollection();
+    $this->routes =
+        new RouteCollection();
 
-    }
+
+    $this->resolver =
+        $resolver;
+
+}
 
 
 
@@ -144,9 +152,21 @@ class Router
 
 
 
-        return new Response(
-            "Controller execution coming next..."
-        );
+      if(is_string($route->action)
+)
+{
+
+    return $this->resolver->resolve(
+        $route->action
+    );
+
+}
+
+
+return new Response(
+    "Invalid Route Action",
+    500
+);
 
 
     }
