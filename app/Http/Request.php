@@ -2,28 +2,77 @@
 
 declare(strict_types=1);
 
-namespace NovaCore\Core;
+namespace NovaCore\Http;
 
-class Container
+
+class Request
 {
-    protected array $bindings = [];
 
-    public function bind(string $abstract, mixed $concrete): void
+    protected array $query;
+
+    protected array $body;
+
+    protected array $server;
+
+
+
+    public function __construct()
     {
-        $this->bindings[$abstract] = $concrete;
+
+        $this->query = $_GET;
+
+        $this->body = $_POST;
+
+        $this->server = $_SERVER;
+
     }
 
-    public function singleton(string $abstract, mixed $concrete): void
+
+
+    public function method(): string
     {
-        $this->bindings[$abstract] = $concrete;
+
+        return $this->server['REQUEST_METHOD'] ?? 'GET';
+
     }
 
-    public function make(string $abstract): mixed
-    {
-        if (!isset($this->bindings[$abstract])) {
-            throw new \Exception("Class {$abstract} is not registered.");
-        }
 
-        return $this->bindings[$abstract];
+
+    public function uri(): string
+    {
+
+        return parse_url(
+            $this->server['REQUEST_URI'] ?? '/',
+            PHP_URL_PATH
+        );
+
     }
+
+
+
+    public function input(
+        string $key,
+        mixed $default=null
+    ): mixed
+    {
+
+        return $this->body[$key]
+            ?? $this->query[$key]
+            ?? $default;
+
+    }
+
+
+
+    public function all(): array
+    {
+
+        return array_merge(
+            $this->query,
+            $this->body
+        );
+
+    }
+
+
 }

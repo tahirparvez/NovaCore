@@ -2,28 +2,62 @@
 
 declare(strict_types=1);
 
-namespace NovaCore\Core;
+namespace NovaCore\Http;
 
-class Container
+
+class Response
 {
-    protected array $bindings = [];
 
-    public function bind(string $abstract, mixed $concrete): void
+
+    protected mixed $content;
+
+    protected int $status;
+
+
+
+    public function __construct(
+        mixed $content='',
+        int $status=200
+    )
     {
-        $this->bindings[$abstract] = $concrete;
+
+        $this->content=$content;
+
+        $this->status=$status;
+
     }
 
-    public function singleton(string $abstract, mixed $concrete): void
+
+
+    public function send(): void
     {
-        $this->bindings[$abstract] = $concrete;
+
+        http_response_code(
+            $this->status
+        );
+
+
+        echo $this->content;
+
     }
 
-    public function make(string $abstract): mixed
-    {
-        if (!isset($this->bindings[$abstract])) {
-            throw new \Exception("Class {$abstract} is not registered.");
-        }
 
-        return $this->bindings[$abstract];
+
+    public static function json(
+        array $data,
+        int $status=200
+    ): self
+    {
+
+        return new self(
+            json_encode(
+                $data,
+                JSON_PRETTY_PRINT
+            ),
+            $status
+        );
+
     }
+
+
 }

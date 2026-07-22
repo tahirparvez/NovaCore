@@ -2,31 +2,40 @@
 
 declare(strict_types=1);
 
-
 namespace NovaCore\Core;
 
 
-use NovaCore\Contracts\ContainerInterface;
+use NovaCore\Http\Kernel;
+
 
 
 class Application
 {
 
 
-    protected ContainerInterface $container;
+    protected Container $container;
 
 
 
     public function __construct()
     {
 
-        $this->container=new Container();
+        $this->container =
+            new Container();
+
+
+        $this->container->singleton(
+            self::class,
+            $this
+        );
+
 
     }
 
 
 
-    public function container():ContainerInterface
+
+    public function container():Container
     {
 
         return $this->container;
@@ -35,10 +44,25 @@ class Application
 
 
 
-    public function run():void
+    public function handle():void
     {
 
-        echo "NovaCore Framework v0.0.1 Running 🚀";
+        $request =
+            new \NovaCore\Http\Request();
+
+
+        $kernel =
+            new Kernel($this);
+
+
+
+        $response =
+            $kernel->handle(
+                $request
+            );
+
+
+        $response->send();
 
     }
 
