@@ -35,9 +35,16 @@ class Kernel
     {
 
 
-        return new Response(
-            "NovaCore Request Received 🚀"
-        );
+        $router =
+$this->app->container()
+->make(
+    \NovaCore\Core\Routing\Router::class
+);
+
+
+return $router->dispatch(
+    $request
+);
 
 
     }

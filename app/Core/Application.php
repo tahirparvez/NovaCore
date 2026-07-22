@@ -1,8 +1,13 @@
 <?php
-
 declare(strict_types=1);
-
 namespace NovaCore\Core;
+
+use NovaCore\Core\Routing\Router;
+use NovaCore\Core\Routing\RouteFacade;
+
+
+
+
 
 
 use NovaCore\Http\Kernel;
@@ -28,6 +33,25 @@ class Application
             self::class,
             $this
         );
+
+
+$router=new Router();
+
+
+RouteFacade::setRouter(
+    $router
+);
+
+
+$this->container->singleton(
+    Router::class,
+    $router
+);
+
+
+require dirname(__DIR__,2)
+.'/routes/web.php';
+
 
 
     }

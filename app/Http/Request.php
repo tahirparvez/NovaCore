@@ -38,16 +38,33 @@ class Request
 
 
 
-    public function uri(): string
+  public function uri(): string
+{
+
+    $uri = parse_url(
+        $this->server['REQUEST_URI'] ?? '/',
+        PHP_URL_PATH
+    );
+
+
+    $scriptName = dirname(
+        $this->server['SCRIPT_NAME']
+    );
+
+
+    if($scriptName !== '/')
     {
-
-        return parse_url(
-            $this->server['REQUEST_URI'] ?? '/',
-            PHP_URL_PATH
+        $uri = str_replace(
+            $scriptName,
+            '',
+            $uri
         );
-
     }
 
+
+    return $uri ?: '/';
+
+}
 
 
     public function input(

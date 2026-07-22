@@ -32,17 +32,25 @@ class Container implements ContainerInterface
 
 
 
-    public function singleton(
-        string $abstract,
-        mixed $concrete
-    ): void
+   public function singleton(
+    string $abstract,
+    mixed $concrete
+): void
+{
+
+    $this->bindings[$abstract]=$concrete;
+
+
+    if(is_object($concrete))
     {
-
-        $this->bindings[$abstract]=$concrete;
-
-        $this->instances[$abstract]=null;
-
+        $this->instances[$abstract]=$concrete;
     }
+    else
+    {
+        $this->instances[$abstract]=null;
+    }
+
+}
 
 
 
@@ -75,13 +83,16 @@ class Container implements ContainerInterface
 
 
 
-        if($concrete instanceof \Closure)
-        {
+       if(is_object($concrete))
+{
+    return $concrete;
+}
 
-            return $concrete($this);
 
-        }
-
+if($concrete instanceof \Closure)
+{
+    return $concrete($this);
+}
 
 
         $object=$this->build($concrete);
