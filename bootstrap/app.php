@@ -1,9 +1,11 @@
 <?php
-/*
+
 declare(strict_types=1);
 
 use Dotenv\Dotenv;
 use NovaCore\Core\Application;
+ 
+use NovaCore\Core\Config;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -12,15 +14,33 @@ $dotenv->safeLoad();
 
 date_default_timezone_set($_ENV['TIMEZONE'] ?? 'UTC');
 
-return new Application();*/
+
+$dotenv = Dotenv::createImmutable(
+    dirname(__DIR__)
+);
+
+$dotenv->load();
+
+
+require_once dirname(__DIR__)
+.'/app/helpers.php';
+
+
+Config::load([
+    'database'=>require dirname(__DIR__)
+    .'/config/database.php'
+]);
+
+return new Application();
 
  
-
+/*
 declare(strict_types=1);
 
 
 use Dotenv\Dotenv;
 use NovaCore\Core\Application;
+
 
 
 require_once dirname(__DIR__)
@@ -52,3 +72,5 @@ $application=new Application();
 
 
 return $application;
+
+*/

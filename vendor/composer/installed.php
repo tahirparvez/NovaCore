@@ -1,10 +1,10 @@
 <?php return array(
     'root' => array(
-        'name' => 'tparvez/nova-core',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
-        'type' => 'library',
+        'name' => 'tahirparvez/novacore',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '12a28dc7bddff95bb4230cb4b6b21abe8917d34b',
+        'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
@@ -55,11 +55,11 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'tparvez/nova-core' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
-            'type' => 'library',
+        'tahirparvez/novacore' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '12a28dc7bddff95bb4230cb4b6b21abe8917d34b',
+            'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,

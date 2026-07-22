@@ -1,5 +1,5 @@
 <?php
-
+/*
 use NovaCore\Core\Routing\RouteFacade as Route;
 
 
@@ -21,3 +21,19 @@ Route::get(
 
     }
 );
+
+*/
+ 
+
+use NovaCore\Core\Routing\RouteFacade as Route;
+use NovaCore\Http\Controllers\HomeController;
+use NovaCore\Database\Facades\DB;
+
+
+Route::get(
+    '/',
+    HomeController::class
+);
+
+
+ 

@@ -21,54 +21,91 @@ class Application
 
     protected Container $container;
 
+    protected array $providers = [
+    \NovaCore\Providers\CoreServiceProvider::class,
+    \NovaCore\Providers\RoutingServiceProvider::class,
+    \NovaCore\Providers\DatabaseServiceProvider::class,
+];
+
+protected array $loadedProviders = [];
+
+public function __construct()
+{
+    $this->container = new Container();
+
+    $this->registerProviders();
+
+    $this->bootProviders();
+}
 
 
-    public function __construct()
-    {
+protected function registerProviders(): void
+{
+    foreach ($this->providers as $providerClass) {
 
-        $this->container =
-            new Container();
+        $provider = new $providerClass($this);
 
+        $provider->register();
 
-        $this->container->singleton(
-            self::class,
-            $this
-        );
+        $this->loadedProviders[] = $provider;
+    }
+}
 
+protected function bootProviders(): void
+{
+    foreach ($this->loadedProviders as $provider) {
 
-
-$this->container->singleton(
-    ControllerResolver::class,
-    new ControllerResolver(
-        $this->container
-    )
-);
-
-
-
-$router = $this->container->make(
-    Router::class
-);
-
-
-
-$this->container->singleton(
-    Router::class,
-    $router
-);
-
-
-RouteFacade::setRouter(
-    $router
-);
-
-
-require dirname(__DIR__,2)
-.'/routes/web.php';
-
-
+        $provider->boot();
 
     }
+}
+
+//     public function __construct()
+//     {
+
+//         $this->container =
+//             new Container();
+
+
+//         $this->container->singleton(
+//             self::class,
+//             $this
+//         );
+
+
+
+// $this->container->singleton(
+//     ControllerResolver::class,
+//     new ControllerResolver(
+//         $this->container
+//     )
+// );
+
+
+
+// $router = $this->container->make(
+//     Router::class
+// );
+
+
+
+// $this->container->singleton(
+//     Router::class,
+//     $router
+// );
+
+
+// RouteFacade::setRouter(
+//     $router
+// );
+
+
+// require dirname(__DIR__,2)
+// .'/routes/web.php';
+
+
+
+//     }
 
 
 

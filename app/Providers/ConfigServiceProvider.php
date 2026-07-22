@@ -2,26 +2,34 @@
 
 declare(strict_types=1);
 
+
 namespace NovaCore\Providers;
+
 
 use NovaCore\Core\Application;
 
+
 abstract class ServiceProvider
 {
+
+
     public function __construct(
         protected Application $app
-    ) {}
+    )
+    {
 
-    /**
-     * Register services into the container.
-     */
+    }
+
+
+
     abstract public function register(): void;
 
-    /**
-     * Boot after all providers are registered.
-     */
+
+
     public function boot(): void
     {
-        // Optional
+
     }
+
+
 }
