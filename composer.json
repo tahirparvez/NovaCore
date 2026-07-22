@@ -1,0 +1,16 @@
+{
+    "name": "tahirparvez/novacore",
+    "description": "NovaCore PHP Framework",
+    "type": "project",
+
+    "require": {
+        "php": "^8.2",
+        "vlucas/phpdotenv": "^5.6"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "NovaCore\\": "app\\"
+        }
+    }
+}
