@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+
+require __DIR__.'/vendor/autoload.php';
+
+
+$app = require __DIR__.'/bootstrap/app.php';
+
+
+$command = $argv[1] ?? 'help';
+
+
+match($command)
+{
+
+    'about' => require __DIR__.'/app/Console/Commands/AboutCommand.php',
+
+    'help' => require __DIR__.'/app/Console/Commands/HelpCommand.php',
+
+    default =>
+        print "Command not found: {$command}\n"
+
+};
