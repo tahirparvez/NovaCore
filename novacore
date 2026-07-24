@@ -13,14 +13,21 @@ $app = require __DIR__.'/bootstrap/app.php';
 $command = $argv[1] ?? 'help';
 
 
-match($command)
-{
+// match($command)
+// {
 
-    'about' => require __DIR__.'/app/Console/Commands/AboutCommand.php',
+//     'about' => require __DIR__.'/app/Console/Commands/AboutCommand.php',
 
-    'help' => require __DIR__.'/app/Console/Commands/HelpCommand.php',
+//     'help' => require __DIR__.'/app/Console/Commands/HelpCommand.php',
 
-    default =>
-        print "Command not found: {$command}\n"
+//     default =>
+//         print "Command not found: {$command}\n"
 
-};
+// };
+
+
+use NovaCore\Console\Kernel\ConsoleKernel;
+
+$kernel = new ConsoleKernel();
+
+exit($kernel->run($argv));

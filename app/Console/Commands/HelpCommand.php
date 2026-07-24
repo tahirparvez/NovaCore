@@ -2,21 +2,31 @@
 
 declare(strict_types=1);
 
+namespace NovaCore\Console\Commands;
 
-echo PHP_EOL;
+use NovaCore\Console\Command;
 
-echo "NovaCore CLI".PHP_EOL;
+class HelpCommand extends Command
+{
+    protected string $signature = 'help';
 
-echo "-------------".PHP_EOL;
+    protected string $description = 'Display available commands';
 
-echo PHP_EOL;
+    public function handle(array $arguments = []): int
+    {
+        echo PHP_EOL;
+        echo "NovaCore CLI".PHP_EOL;
+        echo "============".PHP_EOL;
+        echo PHP_EOL;
 
-echo "Available commands:".PHP_EOL;
+        echo "Available Commands".PHP_EOL;
+        echo PHP_EOL;
 
-echo PHP_EOL;
+        echo "about        Display framework information".PHP_EOL;
+        echo "help         Show this help message".PHP_EOL;
 
-echo "about          Show framework information".PHP_EOL;
+        echo PHP_EOL;
 
-echo "help           Show this help message".PHP_EOL;
-
-echo PHP_EOL;
+        return 0;
+    }
+}
