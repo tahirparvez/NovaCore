@@ -6,6 +6,7 @@ namespace NovaCore\Console\Kernel;
 
 use NovaCore\Console\Commands\AboutCommand;
 use NovaCore\Console\Commands\HelpCommand;
+use NovaCore\Console\Commands\LogTestCommand;
 
 class ConsoleKernel
 {
@@ -16,6 +17,10 @@ class ConsoleKernel
         $registry->register(new AboutCommand());
         $registry->register(new HelpCommand());
 
+        $registry->register(
+    new LogTestCommand()
+);
+        
         $command = $argv[1] ?? 'help';
 
         $instance = $registry->get($command);

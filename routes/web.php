@@ -36,4 +36,10 @@ Route::get(
 );
 
 
- 
+ Route::get('/error-test', function(){
+
+    throw new Exception(
+        "NovaCore Exception Test"
+    );
+
+});

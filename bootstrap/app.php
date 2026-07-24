@@ -7,6 +7,13 @@ use NovaCore\Core\Application;
  
 use NovaCore\Core\Config;
 
+
+use NovaCore\Exceptions\Handler;
+use NovaCore\Logging\Logger;
+use NovaCore\Logging\LogWriter;
+
+
+
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
@@ -30,6 +37,17 @@ Config::load([
     'database'=>require dirname(__DIR__)
     .'/config/database.php'
 ]);
+
+
+
+$handler = new Handler(
+    new Logger(
+        new LogWriter()
+    )
+);
+
+
+$handler->register();
 
 return new Application();
 
