@@ -2,3 +2,11 @@
 2026-07-24 14:57:29 [ERROR] NovaCore Exception Test in C:\xampp\htdocs\websites\NovaCore\routes\web.php line 41
 2026-07-24 14:59:03 [ERROR] NovaCore Exception Test in C:\xampp\htdocs\websites\NovaCore\routes\web.php line 41
 2026-07-24 17:19:56 [ERROR] NovaCore Exception Test in C:\xampp\htdocs\websites\NovaCore\routes\web.php line 41
+2026-07-24 17:43:57 [ERROR] Call to undefined method NovaCore\Database\Facades\DB::setManager() in C:\xampp\htdocs\websites\NovaCore\app\Providers\DatabaseServiceProvider.php line 77
+2026-07-24 19:19:57 [ERROR] Class "NovaCore\Providers\Connection" not found in C:\xampp\htdocs\websites\NovaCore\app\Providers\DatabaseServiceProvider.php line 63
+2026-07-24 19:20:22 [ERROR] Class "NovaCore\Providers\Connection" not found in C:\xampp\htdocs\websites\NovaCore\app\Providers\DatabaseServiceProvider.php line 63
+2026-07-24 19:21:57 [ERROR] syntax error, unexpected end of file, expecting "`" in C:\xampp\htdocs\websites\NovaCore\app\Database\Grammar\MySqlGrammar.php line 29
+2026-07-24 19:22:02 [ERROR] syntax error, unexpected end of file, expecting "`" in C:\xampp\htdocs\websites\NovaCore\app\Database\Grammar\MySqlGrammar.php line 29
+2026-07-24 19:22:39 [ERROR] syntax error, unexpected end of file, expecting "`" in C:\xampp\htdocs\websites\NovaCore\app\Database\Grammar\MySqlGrammar.php line 29
+2026-07-24 19:23:36 [ERROR] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'novacore_school.students' doesn't exist in C:\xampp\htdocs\websites\NovaCore\app\Database\Query\Builder.php line 79
+2026-07-24 19:23:44 [ERROR] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'novacore_school.students' doesn't exist in C:\xampp\htdocs\websites\NovaCore\app\Database\Query\Builder.php line 79

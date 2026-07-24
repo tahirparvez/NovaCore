@@ -26,4 +26,4 @@ class MySqlGrammar implements Grammar
     }
 
 
-}`
+}

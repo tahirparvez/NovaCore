@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace NovaCore\Console\Kernel;
 
+
 use NovaCore\Console\Commands\AboutCommand;
 use NovaCore\Console\Commands\HelpCommand;
 use NovaCore\Console\Commands\LogTestCommand;
+
+
+use NovaCore\Console\Commands\DbTestCommand;
 
 class ConsoleKernel
 {
@@ -17,10 +21,10 @@ class ConsoleKernel
         $registry->register(new AboutCommand());
         $registry->register(new HelpCommand());
 
-        $registry->register(
-    new LogTestCommand()
-);
+        $registry->register(new LogTestCommand());
         
+        $registry->register(new DbTestCommand());
+
         $command = $argv[1] ?? 'help';
 
         $instance = $registry->get($command);

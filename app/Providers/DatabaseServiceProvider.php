@@ -1,84 +1,56 @@
 <?php
-/*
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace NovaCore\Providers;
 
 
 use NovaCore\Core\Application;
 
+use NovaCore\Database\Connection;
+use NovaCore\Database\DatabaseManager;
 
-abstract class ServiceProvider
+use NovaCore\Database\Facades\DB;
+use NovaCore\Database\Query\Builder;
+use NovaCore\Database\Grammar\MySqlGrammar;
+
+
+class DatabaseServiceProvider
 {
 
 
-    public function __construct(
-        protected Application $app
-    )
+    public function register(): void
     {
 
+        $config = require __DIR__.'/../../config/database.php';
+
+
+        $manager = new DatabaseManager($config);
+
+
+        $pdo = $manager->connection();
+
+
+
+        $grammar = new MySqlGrammar();
+
+
+        $builder = new Builder(
+            $pdo,
+            $grammar
+        );
+
+
+        DB::setBuilder(
+            $builder
+        );
+
     }
-
-
-
-    abstract public function register(): void;
-
 
 
     public function boot(): void
     {
 
     }
-
-
-}
-
-*/
-
- 
-
-declare(strict_types=1);
-
-namespace NovaCore\Providers;
-
-
-use NovaCore\Database\DatabaseManager;
-use NovaCore\Database\Facades\DB;
-use NovaCore\Core\Config;
-
-
-class DatabaseServiceProvider 
-extends ServiceProvider
-{
-
-
-    public function register():void
-    {
-
-    	
-
-        $database =
-            new DatabaseManager(
-                Config::get(
-                    'database'
-                )
-            );
-
-
-        $this->app
-        ->container()
-        ->singleton(
-            DatabaseManager::class,
-            $database
-        );
-
-
-        DB::setManager(
-            $database
-        );
-
-    }
-
 
 }
