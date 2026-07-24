@@ -10,3 +10,7 @@
 2026-07-24 19:22:39 [ERROR] syntax error, unexpected end of file, expecting "`" in C:\xampp\htdocs\websites\NovaCore\app\Database\Grammar\MySqlGrammar.php line 29
 2026-07-24 19:23:36 [ERROR] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'novacore_school.students' doesn't exist in C:\xampp\htdocs\websites\NovaCore\app\Database\Query\Builder.php line 79
 2026-07-24 19:23:44 [ERROR] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'novacore_school.students' doesn't exist in C:\xampp\htdocs\websites\NovaCore\app\Database\Query\Builder.php line 79
+2026-07-24 19:36:38 [ERROR] Call to undefined method NovaCore\Database\Query\Builder::orderBy() in C:\xampp\htdocs\websites\NovaCore\app\Console\Commands\DbTestCommand.php line 34
+2026-07-24 19:37:17 [ERROR] Call to undefined method NovaCore\Database\Query\Builder::orderBy() in C:\xampp\htdocs\websites\NovaCore\app\Console\Commands\DbTestCommand.php line 34
+2026-07-24 19:39:30 [ERROR] Call to undefined method NovaCore\Database\Query\Builder::orderBy() in C:\xampp\htdocs\websites\NovaCore\app\Console\Commands\DbTestCommand.php line 34
+2026-07-24 19:47:20 [ERROR] syntax error, unexpected token "{", expecting "function" in C:\xampp\htdocs\websites\NovaCore\app\Database\Grammar\MySqlGrammar.php line 20

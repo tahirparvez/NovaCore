@@ -28,10 +28,11 @@ class DbTestCommand extends Command
     {
 
 
-        $users =
-            DB::table('students')
-                ->get();
-
+       $users = DB::table('students')
+    ->where('class','=','10A')
+    ->orderBy('name')
+    ->limit(10)
+    ->get();
 
 
         print_r($users);
